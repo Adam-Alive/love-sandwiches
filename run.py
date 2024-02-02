@@ -24,7 +24,7 @@ def get_sales_data():
         print("Data should be six numbers, separated by commas.")
         print("Example: 10,20,30,40,50,60\n")
 
-        data_str = input("Enter your data here: \n")   
+        data_str = input("Enter your data here: \n")
         sales_data = data_str.split(",")
 
         if validate_data(sales_data):
@@ -121,11 +121,11 @@ def get_last_5_entries_sales():
     return columns
 
 
-    def calculate_stock_data(data):
-    """
+def calculate_stock_data(data):
+    '''
     Calculate the average stock for each item type, adding 10%
-    """
-    print("Calculating stock data...\n")
+    python'''
+    print('Calculating stock data...\n')
     new_stock_data = []
 
     for column in data:
