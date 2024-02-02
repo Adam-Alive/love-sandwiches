@@ -25,7 +25,7 @@ def get_sales_data():
         print("Data should be six numbers, separated by commas.")
         print("Example: 10,20,30,40,50,60\n")
 
-        data_str = input("Enter your data here: ")    
+        data_str = input("Enter your data here: ")   
         sales_data = data_str.split(",")
 
         if validate_data(sales_data):
@@ -102,19 +102,36 @@ def calculate_surplus_data(sales_row):
         surplus_data.append(surplus)
     
     return surplus_data
- 
+
+
+def get_last_5_entries_sales():
+    '''
+    Collects columns of data from sales worksheet, collecting
+    the last 5 entries for each sandwich and returns the data
+    as a list of lists.
+    '''
+    sales = SHEET.worksheet('sales')
+    # column = sales.col_values(3) (chicken salad)
+
+    columns = []
+    for ind in range(1, 7):
+        column = sales.col_values(ind)
+        columns.append(column)
+    
+    return columns
 
 def main():
     '''
-    Run all program functions  
+    Run all program functions
     '''
     data = get_sales_data()
     sales_data = [int(num) for num in data]
     update_worksheet(sales_data, 'sales')
-    new_surplus_data = calculate_surplus_data(sales_data)    
+    new_surplus_data = calculate_surplus_data(sales_data)   
     update_worksheet(new_surplus_data, 'surplus')
 
 print('Welcome to Love Sandwiches Data Automation')
-main()
+# main()
+sales_columns = get_last_5_entries_sales()
 
 
